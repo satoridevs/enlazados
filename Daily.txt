@@ -6,6 +6,14 @@
 -------------------
 
 Julian
+¿ Que se hizo ayer ?
+Nos reunimos para crear los mockups de las páginas de Login y Registro
+
+¿ Que voy a hacer el dia de hoy ?
+Cloné el repositorio del proyecto
+
+¿ He tenido o estoy teniendo algun inconveniente con mi desarrollo?
+Sin novedades
 
 Alejandro 
 
