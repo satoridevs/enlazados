@@ -9,6 +9,16 @@ Julian
 
 Alejandro 
 
+¿ Que se hizo ayer ?
+rpta: se crea cuenta de github para el proyecto y se crea repositorio y se crea estructura base.
+
+¿ Que voy a hacer el dia de hoy ?
+el dia de hoy instalare la libreria en mi rama de laravel passport y leere sobre la recomendacion que nos hizo
+la profe acerca de laravel socialite
+
+¿ He tenido o estoy teniendo algun inconveniente con mi desarrollo?
+por el momento ninguno.
+
 Valentina
 
 
