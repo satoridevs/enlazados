@@ -37,6 +37,16 @@ Julian
 
 Alejandro 
 
+¿ Que se hizo ayer ?
+rpta: Instale laravel passport en la dependencia de mi rama y vi algunos ejemplos, ademas cheque de manera rapida
+la libreria de socialite
+¿ Que voy a hacer el dia de hoy ?
+validar que tipo de token va a ser mejor para implementar, correr las migraciones y tener listo el codigo para realizar
+ejemplo con passport
+¿ He tenido o estoy teniendo algun inconveniente con mi desarrollo?
+Tuve problemas al instalar laravel passport, debido a un error de memoria, se soluciono leyendo algunas recomendaciones
+en stackoverflow y modificando el php.ini
+
 Valentina
 
 
