@@ -50,12 +50,19 @@ en stackoverflow y modificando el php.ini
 Valentina
 
 
-20/11/2020
+22/11/2020
 -------------------
 
 Julian
 
 Alejandro 
+
+¿ Que se hizo ayer ?
+rpta: el jueves se dejo todo configurado para empezar con laravel passport, el viernes no pude ttrabajar en el proyecto
+¿ Que voy a hacer el dia de hoy ?
+rpta: se va a realizar el modelo, migracion y semilla de user y rol, para poder empezar a crear los metodos de las apis de estas dos entidades y luego hacer pruebas con passport
+¿ He tenido o estoy teniendo algun inconveniente con mi desarrollo?
+por el momento no
 
 Valentina
 
