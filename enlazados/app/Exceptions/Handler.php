@@ -7,6 +7,9 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
+
+    use ApiResponser;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -52,4 +55,14 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+
+
+    protected function convertValidationExceptionToResponse(ValidationException $e, $request)
+    {   
+
+        $errors = $e->validator->errors()->getMessages();
+        return response()->json($errors, 422);
+
+    }
+
 }

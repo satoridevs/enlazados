@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -35,6 +36,40 @@ class User extends Authenticatable
         'verification_token'        
     ];
 
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'birthdate'
+    ];
+
+    public function setNameAttribute($valor) {
+        
+        $this->attributes['name'] = strtolower($valor);
+    }
+
+    public function  getNameAttribute($valor){
+        return ucfirst($valor);
+    }
+
+    public function setLastNameAttribute($valor) {
+        
+        $this->attributes['lastname'] = strtolower($valor);
+    }
+
+    public function getLastNameAttribute($valor){
+        return ucfirst($valor);
+    }
+
+    public function setEmailAttribute($valor) {
+        
+        $this->attributes['email'] = strtolower($valor);
+    }
+
+    public function getEmailAttribute($valor){
+        return $valor;
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -59,7 +94,8 @@ class User extends Authenticatable
 
     public static function verificationToken(){
 
-        return str_random(40);
+        $random = Str::random(40);
+        return $random;
     }
 
 }
