@@ -1,0 +1,14 @@
+¿ Que se hizo ayer ?
+¿ Que voy a hacer el dia de hoy ?
+¿ He tenido o estoy teniendo algun inconveniente con mi desarrollo?
+
+30/11/2020
+
+Alejandro
+
+¿ Que se hizo ayer ?
+rpta: el dia de ayer aun nada
+¿ Que voy a hacer el dia de hoy ?
+rpta: si instala laravel socialite, se desintala passport, y se matricula la app en google y facebook.
+¿ He tenido o estoy teniendo algun inconveniente con mi desarrollo?
+rpta: por el momento no
