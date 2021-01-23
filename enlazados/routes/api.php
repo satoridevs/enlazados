@@ -18,8 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//Route::post('oauth/token', '\Laravel\Passport\Http\Controllers\AccessTokenController@issueToken');
-
-Route::resource('roles', 'Rol\RolController', ['only' => ['index','show']]);
-
-Route::resource('users', 'User\UserController', ['except' => ['create','edit']]);
+Route::get('logear/{driver}', 'Auth\LoginController@redirectToProvider');
+Route::get('logear/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
