@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Rol;
 
 use App\Http\Controllers\ApiController;
-use App\Rol;
 use Illuminate\Http\Request;
+use App\Rol;
 
 class RolController extends ApiController
 {
@@ -17,16 +17,17 @@ class RolController extends ApiController
     {
         $roles = Rol::all();
         return $this->showAll($roles);
+        
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rol  $rol
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
+    {
         $rol = Rol::findOrFail($id);
         return $this->showOne($rol);
     }

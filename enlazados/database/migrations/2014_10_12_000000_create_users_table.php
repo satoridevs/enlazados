@@ -15,7 +15,6 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            
             $table->id();
             $table->string('name');
             $table->string('lastname');
@@ -33,7 +32,6 @@ class CreateUsersTable extends Migration
             $table->Integer('role_id')->default(3);    
             $table->rememberToken();
             $table->timestamps();
-            
         });
     }
 
