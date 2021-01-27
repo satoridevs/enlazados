@@ -7,7 +7,6 @@ use Throwable;
 
 class Handler extends ExceptionHandler
 {
-
     /**
      * A list of the exception types that are not reported.
      *
@@ -33,7 +32,7 @@ class Handler extends ExceptionHandler
      * @param  \Throwable  $exception
      * @return void
      *
-     * @throws \Exception
+     * @throws \Throwable
      */
     public function report(Throwable $exception)
     {
@@ -53,5 +52,4 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
-
 }
