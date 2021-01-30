@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
+use App\SocialProfile;
 
 class User extends Authenticatable
 {
@@ -21,8 +22,7 @@ class User extends Authenticatable
      */
 
     protected $fillable = [
-        'name',
-        'lastname',
+        'namecomplete',        
         'documentnumber',
         'email',
         'phone',        
@@ -42,18 +42,19 @@ class User extends Authenticatable
         'birthdate'
     ];
 
+        //uno a muchos
+        public function socialProfiles(){
+            return $this->hasMany(SocialProfile::class);
+            //return $this->hasMany('App\Game');
+        }
+
     public function setNameAttribute($valor) {
         
-        $this->attributes['name'] = strtolower($valor);
+        $this->attributes['namecomplete'] = strtolower($valor);
     }
 
     public function  getNameAttribute($valor){
         return ucfirst($valor);
-    }
-
-    public function setLastNameAttribute($valor) {
-        
-        $this->attributes['lastname'] = strtolower($valor);
     }
 
     public function getLastNameAttribute($valor){
