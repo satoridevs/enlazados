@@ -13,8 +13,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $usr = new User;
-        $usr->name = 'Manuel';
-        $usr->lastname = 'Lopez';
+        $usr->name = 'Manuel Lopez';        
         $usr->documentnumber = '1054917';
         $usr->email = 'malg.nmg@hotmail.com';
         $usr->phone = 3502487845;
