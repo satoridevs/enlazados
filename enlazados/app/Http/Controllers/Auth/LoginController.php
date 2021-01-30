@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 use Laravel\Socialite\Facades\Socialite;
 use App\User;
-use App\Socialprofile;
+use App\SocialProfile;
 
 class LoginController extends ApiController
 {
@@ -40,7 +40,7 @@ class LoginController extends ApiController
         }
         
         
-        $social_profile = Socialprofile::where('social_id',$userSocialite->getid())
+        $social_profile = SocialProfile::where('social_id',$userSocialite->getid())
                                        ->where('social_name',$driver)->first();
 
         if(!$social_profile){
