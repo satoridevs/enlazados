@@ -26,3 +26,4 @@ Route::resource('roles', 'Rol\RolController', ['only' => ['index','show']]);
 
 //users
 Route::resource('users', 'User\UserController', ['except' => ['create','edit']]);
+Route::get('users/login/manual', 'User\UserController@login');

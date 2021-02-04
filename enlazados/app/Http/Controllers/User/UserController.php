@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\ApiController;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends ApiController
 {
@@ -28,8 +29,10 @@ class UserController extends ApiController
      */
     public function store(Request $request)
     {
+
         $campos  = $request->all();
-        $campos['password'] = bcrypt($request->password);
+        //$campos['password'] = bcrypt($request->password);
+        $campos['password'] = Crypt::encrypt($request->password);        
         $campos['verified'] = User::USUARIO_NO_VERIFICADO;
         $campos['verification_token'] = User::verificationToken();        
        
@@ -39,8 +42,7 @@ class UserController extends ApiController
             $campos['photo'] = 'imgs/'.$file;
         }
 
-       $usuario = User::create($campos);
-
+       $usuario = User::create($campos);       
        //$usuario = User::create($user);
        
        return $this->showOne($usuario,201);
@@ -52,9 +54,9 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        $user = User::findOrFail($id);        
+        //$user = User::findOrFail($id);        
         return $this->showOne($user);
     }
 
@@ -66,17 +68,13 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         
-        $user = User::findOrFail($id);
+        //$user = User::findOrFail($id);
 
-        if ($request->has('name')) {
-            $user->name = $request->name;
-        }
-
-        if ($request->has('lastname')) {
-            $user->lastname = $request->lastname;
+        if ($request->has('namecomplete')) {
+            $user->namecomplete = $request->namecomplete;
         }
 
         if ($request->has('phone')) {
@@ -87,8 +85,9 @@ class UserController extends ApiController
             $user->birthdate = $request->birthdate;
         }
 
-        if ($request->has('password')) {
-            $user->password = bcrypt($request->password);
+        if ($request->has('password')) {            
+            //$user->password = bcrypt($request->password);
+            $user->password = Crypt::encrypt($request->password);
         }
 
         if (!$user->isDirty()) {
@@ -106,10 +105,27 @@ class UserController extends ApiController
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        $user = User::findOrFail($id);
+    public function destroy(User $user)
+    {        
         $user->delete();
         return $this->showOne($user);
+    }
+
+    public function login(Request $request)
+    {                
+
+        $user = User::where('email', $request->email)->first();        
+        
+        if(!$user){
+            return $this->errorResponse('Email o password invalido.',403);
+        } else{
+            if (Crypt::decrypt($user->password) == $request->password) {
+            
+                return response()->json($user,201);
+            }
+            else {            
+                return $this->errorResponse('Email o password invalido',403);
+            }
+        }        
     }
 }
