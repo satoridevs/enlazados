@@ -121,7 +121,7 @@ class UserController extends ApiController
         } else{
             if (Crypt::decrypt($user->password) == $request->password) {
             
-                return response()->json($user,201);
+                return response()->json($user,200);
             }
             else {            
                 return $this->errorResponse('Email o password invalido',403);
