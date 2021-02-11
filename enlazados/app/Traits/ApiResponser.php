@@ -22,6 +22,4 @@ trait ApiResponser {
         return $this->successResponse(['data' => $instance], $code);
     }
 
-    
-
 }
