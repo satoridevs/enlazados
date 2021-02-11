@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\ApiController;
 use App\User;
+use App\Rol;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 
@@ -56,8 +57,14 @@ class UserController extends ApiController
      */
     public function show(User $user)
     {
-        //$user = User::findOrFail($id);        
-        return $this->showOne($user);
+        
+        $roles = Rol::findOrFail($user->role_id);        
+        //return $this->showOne($user);
+        return response()->json([
+            'Usuario' => $user,
+            'Rol' => $roles->name
+       ]);
+       
     }
 
 
@@ -121,7 +128,13 @@ class UserController extends ApiController
         } else{
             if (Crypt::decrypt($user->password) == $request->password) {
             
-                return response()->json($user,200);
+                //return response()->json($user,200);
+                $roles = Rol::findOrFail($user->role_id);        
+                //return $this->showOne($user);
+                return response()->json([
+                    'Usuario' => $user,
+                    'Rol' => $roles->name
+                ],200);
             }
             else {            
                 return $this->errorResponse('Email o password invalido',403);
