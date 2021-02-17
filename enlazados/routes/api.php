@@ -22,7 +22,8 @@ Route::get('logear/{driver}', 'Auth\LoginController@redirectToProvider');
 Route::get('logear/{driver}/callback', 'Auth\LoginController@handleProviderCallback');
 
 //roles
-Route::resource('roles', 'Rol\RolController', ['only' => ['index','show']]);
+//Route::resource('roles', 'Rol\RolController', ['only' => ['index','show']]);
+Route::resource('roles', 'Rol\RolController', ['except' => ['create','edit']]);
 
 //users
 Route::resource('users', 'User\UserController', ['except' => ['create','edit']]);

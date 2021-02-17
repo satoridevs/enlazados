@@ -31,10 +31,10 @@ class User extends Authenticatable
         'photo',
         'password',                
         'active',
+        'role_id',
         'verified',
-        'verification_token'        
+        'verification_token',
     ];
-
 
     protected $dates = [
         'created_at',
@@ -43,10 +43,10 @@ class User extends Authenticatable
     ];
 
         //uno a muchos
-        public function socialProfiles(){
-            return $this->hasMany(SocialProfile::class);
-            //return $this->hasMany('App\Game');
-        }
+    public function socialProfiles(){
+        return $this->hasMany(SocialProfile::class);
+        //return $this->hasMany('App\Game');
+    }
 
     public function setNameAttribute($valor) {
         
