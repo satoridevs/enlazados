@@ -88,6 +88,10 @@ class UserController extends ApiController
             $user->phone = $request->phone;
         }
 
+        if ($request->has('role_id')) {
+            $user->role_id = $request->role_id;
+        }
+
         if ($request->has('birthdate')) {
             $user->birthdate = $request->birthdate;
         }
