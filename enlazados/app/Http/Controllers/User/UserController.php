@@ -92,6 +92,10 @@ class UserController extends ApiController
             $user->role_id = $request->role_id;
         }
 
+        if ($request->has('active')) {
+            $user->active = $request->active;
+        }
+
         if ($request->has('birthdate')) {
             $user->birthdate = $request->birthdate;
         }

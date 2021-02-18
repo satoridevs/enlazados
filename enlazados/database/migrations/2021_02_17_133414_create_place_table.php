@@ -19,6 +19,20 @@ class CreatePlaceTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('direccion');
             $table->string('barrio');
+            $table->string('ciudad');
+            $table->boolean('apartamento')->nullable();
+            $table->boolean('habitacion')->nullable();
+            $table->boolean('baño')->nullable();
+            $table->boolean('sala')->nullable();
+            $table->boolean('comedor')->nullable();
+            $table->boolean('cocina')->nullable();
+            $table->boolean('lavadero')->nullable();
+            $table->boolean('patio')->nullable();
+            $table->boolean('amoblado')->nullable();
+            $table->Integer('cant_habitaciones')->nullable();    
+            $table->string('imagen_1')->default('imgs/no-photo.png');
+            $table->string('imagen_2')->default('imgs/no-photo.png');
+            $table->timestamps(); 
          });
     }
 

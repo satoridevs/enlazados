@@ -28,3 +28,6 @@ Route::resource('roles', 'Rol\RolController', ['except' => ['create','edit']]);
 //users
 Route::resource('users', 'User\UserController', ['except' => ['create','edit']]);
 Route::get('users/login/manual', 'User\UserController@login');
+
+//places
+Route::resource('places', 'Place\PlaceController', ['except' => ['create','edit']]);
