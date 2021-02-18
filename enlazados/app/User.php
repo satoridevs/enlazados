@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 use App\SocialProfile;
+use App\Place;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,11 @@ class User extends Authenticatable
         //uno a muchos
     public function socialProfiles(){
         return $this->hasMany(SocialProfile::class);
+        //return $this->hasMany('App\Game');
+    }
+
+    public function places(){
+        return $this->hasMany(Place::class);
         //return $this->hasMany('App\Game');
     }
 
