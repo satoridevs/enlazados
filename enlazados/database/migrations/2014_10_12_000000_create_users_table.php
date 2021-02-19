@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('verified')->default(User::USUARIO_NO_VERIFICADO);
             $table->string('verification_token')->nullable();                                        
             $table->string('password')->nullable();                    
-            $table->boolean('active')->default(1);
+            $table->string('active')->default('1');
             $table->Integer('role_id')->default(3);    
             $table->rememberToken();
             $table->timestamps();
