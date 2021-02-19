@@ -30,7 +30,8 @@ class CreatePlaceTable extends Migration
             $table->boolean('patio')->nullable();
             $table->boolean('amoblado')->nullable();
             $table->Integer('cant_habitaciones')->nullable(); 
-            $table->boolean('active')->nullable();   
+            $table->boolean('active')->nullable();
+            $table->string('description')->nullable();   
             $table->string('imagen_1')->default('imgs/no-photo.png');
             $table->string('imagen_2')->default('imgs/no-photo.png');
             $table->timestamps(); 

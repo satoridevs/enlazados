@@ -24,6 +24,7 @@ class Place extends Model
         'amoblado',
         'cant_habitaciones',
         'active',
+        'description',
         'imagen_1',
         'imagen_2',
         'user_id'
