@@ -132,6 +132,10 @@ class PlaceController extends ApiController
             $place->active = $request->active;
         }
 
+        if ($request->has('description')) {
+            $place->description = $request->description;
+        }
+
         if ($request->has('user_id')) {
             $place->user_id = $request->user_id;
         }
