@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use App\Place;
 use App\User;
+use Illuminate\Support\Facades\Storage;
 
 class PlaceController extends ApiController
 {
@@ -33,8 +34,7 @@ class PlaceController extends ApiController
 
         if($user){
             $campos  = $request->all();
-            $campos['user_id'] = $user->id;  
-            $place = Place::create($campos);      
+            $campos['user_id'] = $user->id;     
             
             if ($request->hasFile('imagen_1')) {
 
@@ -44,7 +44,7 @@ class PlaceController extends ApiController
                 $request->imagen_1->move(public_path('img'), $file);
                 $campos['imagen_1'] = $file;
             }
-
+            $place = Place::create($campos);   
             return $this->showOne($place,201);
             
         }else{
@@ -140,8 +140,13 @@ class PlaceController extends ApiController
             $place->user_id = $request->user_id;
         }
 
-        if ($request->has('imagen_1')) {
-            $place->imagen_1 = $request->imagen_1;
+        if ($request->hasFile('imagen_1')) { 
+
+            Storage::delete($place->imagen_1); 
+
+            $file = time().'.'.$request->imagen_1->extension();
+            $request->imagen_1->move(public_path('img'), $file);
+            $place->imagen_1 = $file;
         }
 
         if ($request->has('imagen_2')) {
@@ -166,7 +171,8 @@ class PlaceController extends ApiController
      */
     public function destroy($id)
     {
-        $place = Place::findOrFail($id);  
+        $place = Place::findOrFail($id); 
+        Storage::delete($place->imagen_1); 
         $place->delete();
         
         return $this->showOne($place);
