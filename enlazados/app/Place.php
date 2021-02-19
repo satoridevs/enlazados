@@ -25,6 +25,7 @@ class Place extends Model
         'cant_habitaciones',
         'active',
         'description',
+        'cash',
         'imagen_1',
         'imagen_2',
         'user_id'
