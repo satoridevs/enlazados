@@ -15,7 +15,7 @@ class Place extends Model
         'ciudad',
         'apartamento',
         'habitacion',
-        'baño',
+        'bano',
         'sala',
         'comedor',
         'cocina',
@@ -23,6 +23,7 @@ class Place extends Model
         'patio',
         'amoblado',
         'cant_habitaciones',
+        'active',
         'imagen_1',
         'imagen_2',
         'user_id'

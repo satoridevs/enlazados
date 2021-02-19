@@ -34,15 +34,16 @@ class PlaceController extends ApiController
         if($user){
             $campos  = $request->all();
             $campos['user_id'] = $user->id;  
-            $place = Place::create($campos);       
+            $place = Place::create($campos);      
             
+            if ($request->hasFile('imagen_1')) {
 
-            // $place = Place::create([
-            //     'user_id'       => $user->id,
-            //     'direccion'     => $request->direccion,
-            //     'barrio'        => $request->barrio,
-            //     'ciudad'        => $request->ciudad,
-            // ]);
+                //$campos['imagen_1'] = $request->imagen_1->store('');  
+
+                $file = time().'.'.$request->imagen_1->extension();
+                $request->imagen_1->move(public_path('img'), $file);
+                $campos['imagen_1'] = $file;
+            }
 
             return $this->showOne($place,201);
             
@@ -126,6 +127,10 @@ class PlaceController extends ApiController
         if ($request->has('cant_habitaciones')) {
             $place->cant_habitaciones = $request->cant_habitaciones;
         }
+        
+        if ($request->has('active')) {
+            $place->active = $request->active;
+        }
 
         if ($request->has('user_id')) {
             $place->user_id = $request->user_id;
@@ -159,6 +164,7 @@ class PlaceController extends ApiController
     {
         $place = Place::findOrFail($id);  
         $place->delete();
+        
         return $this->showOne($place);
     }
 }
